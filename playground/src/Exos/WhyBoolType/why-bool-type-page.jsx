@@ -4,7 +4,7 @@ import React, { Component } from "react";
 // const { whyDidYouUpdate } = require("why-did-you-update");
 // whyDidYouUpdate(React);
 
-export class StateInstanceReconciliationParadox extends Component {
+export class WhyBoolTypePage extends Component {
     state = {
         counter: "A"
     };

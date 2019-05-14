@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export default class UpdateAndReconciliationPage extends Component {
+export default class WillItDiffPage extends Component {
     render() {
         return (
             <div>
