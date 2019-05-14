@@ -39,7 +39,7 @@ export class WasteRenderEasy extends Component {
     }
 }
 
-// Condition: Need to stay Component
+// Condition: Need to extends Component
 class Counter extends Component {
     render() {
         const { count, onIncrementCounter } = this.props;

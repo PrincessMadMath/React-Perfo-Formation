@@ -4,10 +4,10 @@ import React, { Component, PureComponent } from "react";
 // TODO: Faire que le LifeManagementPanel ne s'update pas à chaque fois
 export class WasteRenderIntermediate extends Component {
     state = {
+        age: 20,
         profile: {
             name: "John",
             profession: "Coyboy",
-            age: 20,
             salary: 1000
         },
         catchedCows: [{ name: "Cow #0" }]
@@ -55,12 +55,11 @@ export class WasteRenderIntermediate extends Component {
 class LifeManagementPanel extends PureComponent {
     render() {
         const { onIncreaseAge, currentAge } = this.props;
-
         return (
             <div className="mv2">
                 Life Control:
                 <button onClick={() => onIncreaseAge(currentAge + 1)}>
-                    Grow old!
+                    Grow old! (current: {currentAge})
                 </button>
             </div>
         );
