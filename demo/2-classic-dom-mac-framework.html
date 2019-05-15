@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Introduction to DOM</title>
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"
+        />
+    </head>
+    <body>
+        <!-- We will insert something here -->
+        <div id="app_container"></div>
+
+        <script>
+            const macElement = {
+                type: "div",
+                props: [{ name: "class", value: "flex justify-center" }],
+                children: {
+                    type: "h1",
+                    props: [],
+                    children: "Hello World"
+                }
+            };
+
+            function macRender(macElement) {
+                if (!macElement) {
+                    return null;
+                }
+
+                if (
+                    typeof macElement === "string" ||
+                    macElement instanceof String
+                ) {
+                    return document.createTextNode(macElement);
+                }
+
+                const rootNode = document.createElement(macElement.type);
+
+                for (const prop of macElement.props) {
+                    rootNode.setAttribute(prop.name, prop.value);
+                }
+
+                var childNode = macRender(macElement.children);
+                if (childNode !== null) {
+                    rootNode.appendChild(childNode);
+                }
+
+                return rootNode;
+            }
+
+            const app = macRender(macElement);
+            document.querySelector("#app_container").appendChild(app);
+        </script>
+    </body>
+</html>
