@@ -118,9 +118,24 @@
             const manualComponent = new MyComponent({ name: "John" });
             const manualComponentElement = manualComponent.render();
 
-            // You can try to render any of previous reactElement
-            const domContainer = document.querySelector("#app_container");
-            ReactDOM.render(componentElement, domContainer);
+            // Funky element
+            const isAdmin = false;
+            const funkyElement = (
+                <div className="flex justify-center">
+                    {isAdmin && <span>Drop database</span>}
+                    <span>Hello {name}</span>
+                </div>
+            );
+
+            /****** React Element *******/
+            // Look how the instance contains the state and method on the class (try call componentInstance.toggleMoment() in the console)
+            // If you navigate under componentInstance._reactInternalFiber.child and look for the property type, memoizedProps and again child you can find the resolve DOM element div>h1>[text]
+
+            // // You now find back the classic DOM
+            // const componentDOMNode = ReactDOM.findDOMNode(componentInstance);
+            // console.log({ componentDOMNode });
+
+            /****** Danger Zone *******/
 
             // Already seen error:
             const PossibleError = <MyComponent name={"John"} />;
@@ -135,6 +150,14 @@
                 React.createElement(MyComponent, { name: "John" }, null),
                 {},
                 null
+            );
+
+            /****** Render section *******/
+            // You can try to render any of previous reactElement
+            const domContainer = document.querySelector("#app_container");
+            const reactInstance = ReactDOM.render(
+                componentElement,
+                domContainer
             );
         </script>
     </body>
